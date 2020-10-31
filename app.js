@@ -15,6 +15,6 @@ app.set("view engine", "ejs");
 app.use("/party", PartyRouter);
 app.use("/voter", VoterRouter);
 
-app.listen(4000, () => {
+app.listen(process.env.PORT || 4000, () => {
   console.log(`app is listening to port 4000`);
 });
