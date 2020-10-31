@@ -1,0 +1,21 @@
+{
+  "name": "bihar-evm",
+  "version": "1.0.0",
+  "description": "bihar-evm-machine",
+  "main": "app.js",
+  "repository": "https://github.com/Yashpk789987/bihar-evm.git",
+  "author": "Yashpk789987 <yashpk789987@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon app.js",
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "pg": "^8.4.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  }
+}
