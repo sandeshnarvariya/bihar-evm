@@ -1,8 +1,8 @@
 const pgsql = {
-  host: "ec2-3-210-255-177.compute-1.amazonaws.com",
-  database: "d2l13ofsr38cki",
-  user: "ijfqjmbvxowpel",
-  password: "3665c94618c16daf4beda9fc24c33957205736c7cf04a1c23f753b5d4e5ccbf3",
+  host: "ec2-54-156-53-71.compute-1.amazonaws.com",
+  database: "d1ao9f6ullipip",
+  user: "owdauyrbdhaber",
+  password: "1de63448be0486b8e9389e8e9637aeb7ce1ef0cfc4a8043966b9b98a7c600d38",
   port: 5432,
   ssl: {
     rejectUnauthorized: false,

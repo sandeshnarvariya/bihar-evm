@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/party/submit" method="post" >
+    <table>
+        <tr>
+            <td>
+                <h3>
+                    Add Party
+                </h3>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Enter Party  Name
+            </td>
+            <td>
+                <input type="text" name="name" required >
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Enter Main Candidate  Name
+            </td>
+            <td>
+                <input type="text" name="main_candidate" required >
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Enter Party  Short  Name
+            </td>
+            <td>
+                <input type="text" name="short_name" required >
+            </td>
+        </tr>
+        <tr>
+            <td>
+               <input type="submit" >
+            </td>
+            <td>
+                <input type='reset'  >
+            </td>
+        </tr>
+        <tr>
+           <td><h1 style="color: green;" ><%=message%></h1></td>
+        </tr>
+        <tr>
+            <td><h1 style="color: red;" ><%=error%></h1></td>
+         </tr>
+    </table>
+</form>
+</body>
+</html>
