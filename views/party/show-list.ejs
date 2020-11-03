@@ -14,12 +14,16 @@
          <th>Party Name</th>
          <th>Main Candidate</th>
          <th>Short Name</th>
+         <th>Edit</th>
+         <th>Delete</th>
      </tr>
      <% parties.forEach(function(item){ %>
         <tr>
             <td><%=item.name%></td>
             <td><%=item.main_candidate%></td>
             <td><%=item.short_name%></td>
+            <td><a href="/party/edit/<%=item.id%>">Edit</a></td>
+            <td><a href="/party/delete/<%=item.id%>">Delete</a></td>
         </tr>
      <% }) %>   
     </table>

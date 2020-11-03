@@ -46,4 +46,45 @@ router.get("/get-all", async function (req, res) {
   }
 });
 
+router.get("/edit/:id", async function (req, res) {
+  const id = req.params.id;
+  const query = `select * from party where id = ${id}`;
+  try {
+    const result = await pool.query(query);
+    res.render("party/edit", {
+      party: result.rows[0],
+      message: "",
+      error: "",
+    });
+  } catch (error) {
+    res.send("<h1 style='color:red' >something went wrong</h1>");
+    console.log(error);
+  }
+});
+
+router.post("/register-submit", async function (req, res) {
+  const query = `update party set name='${req.body.name}' , main_candidate='${req.body.main_candidate}' , short_name='${req.body.short_name}' where id = ${req.body.id} `;
+  try {
+    await pool.query(query);
+    res.redirect("/party/get-all");
+  } catch (error) {
+    res.send("<h1 style='color:red' >something went wrong</h1>");
+    console.log(error);
+  }
+});
+
+router.get("/delete/:id", async function (req, res) {
+  const id = req.params.id;
+  const query = `delete from party where id = ${id}`;
+  try {
+    await pool.query(query);
+    res.redirect("/party/get-all");
+  } catch (error) {
+    res.send("<h1 style='color:red' >something went wrong</h1>");
+    console.log(error);
+  }
+});
+
 module.exports = router;
+
+// CURD create update read and delete
