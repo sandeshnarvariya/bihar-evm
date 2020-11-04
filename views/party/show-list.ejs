@@ -10,7 +10,8 @@
         List Of Parties
     </h1>
     <table border="1" >
-     <tr>
+     <tr> 
+         <th>Logo</th>
          <th>Party Name</th>
          <th>Main Candidate</th>
          <th>Short Name</th>
@@ -19,6 +20,7 @@
      </tr>
      <% parties.forEach(function(item){ %>
         <tr>
+            <td><img src="/images/<%=item.logo%>" height="100" width="100" alt="failed to load image" ></td>
             <td><%=item.name%></td>
             <td><%=item.main_candidate%></td>
             <td><%=item.short_name%></td>

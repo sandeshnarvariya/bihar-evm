@@ -6,7 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="/party/submit" method="post" >
+    <form action="/party/submit" method="post" enctype="multipart/form-data"  >
     <table>
         <tr>
             <td>
@@ -37,6 +37,14 @@
             </td>
             <td>
                 <input type="text" name="short_name" required >
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Choose Logo Of Party
+            </td>
+            <td>
+                <input type="file" name="logo" >
             </td>
         </tr>
         <tr>

@@ -1,7 +1,10 @@
 const express = require("express");
-const router = express.Router();
 const { Pool } = require("pg");
+const multer = require("multer");
+
+const router = express.Router();
 const { pgsql } = require("../db");
+const upload = multer({ dest: "./public/images" });
 
 const pool = new Pool(pgsql);
 
@@ -16,8 +19,9 @@ router.get("/register", function (req, res) {
   });
 });
 
-router.post("/submit", async function (req, res) {
-  const query = `insert into party(name,short_name,main_candidate) values('${req.body.name}','${req.body.short_name}','${req.body.main_candidate}') `;
+router.post("/submit", upload.single("logo"), async function (req, res) {
+  const logo = req.file.filename;
+  const query = `insert into party(name,short_name,main_candidate,logo) values('${req.body.name}','${req.body.short_name}','${req.body.main_candidate}','${logo}') `;
   try {
     const result = await pool.query(query);
     res.render("party/register", {
@@ -70,6 +74,18 @@ router.post("/register-submit", async function (req, res) {
   } catch (error) {
     res.send("<h1 style='color:red' >something went wrong</h1>");
     console.log(error);
+  }
+});
+
+router.post("/logo-edit", upload.single("logo"), async function (req, res) {
+  const logo = req.file.filename;
+  const query = `update party set logo = '${logo}' where id = ${req.body.id} `;
+  try {
+    await pool.query(query);
+    res.redirect("/party/get-all");
+  } catch (error) {
+    console.log(error);
+    res.send("<h1 style='color:red' >something went wrong</h1>");
   }
 });
 

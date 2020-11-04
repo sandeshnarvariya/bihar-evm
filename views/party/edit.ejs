@@ -56,5 +56,27 @@
          </tr>
     </table>
 </form>
+<form action="/party/logo-edit" method="post" enctype="multipart/form-data" >
+    <table>
+        <input type="text" name="id" readonly hidden value="<%=party.id%>">
+        <tr>
+            <td>
+                upload logo here 
+            </td>
+            <td>
+                <input required type="file" name="logo" >
+            </td>
+            <td><img src="/images/<%=party.logo%>" height="100" width="100" alt="failed to load image" ></td>
+        </tr>
+        <tr>
+            <td>
+               <input type="submit" value="Edit" >
+            </td>
+            <td>
+                <input type='reset'  >
+            </td>
+        </tr>
+    </table>
+</form>
 </body>
 </html>
