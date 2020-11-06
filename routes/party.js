@@ -1,29 +1,38 @@
 const express = require("express");
 const { Pool } = require("pg");
 const multer = require("multer");
+const isAuth = require("../middlewares/auth");
 
 const router = express.Router();
+
 const { pgsql } = require("../db");
 const upload = multer({ dest: "./public/images" });
 
 const pool = new Pool(pgsql);
 
-router.get("/", function (req, res) {
-  res.send("<h1>Hello Router</h1>");
-});
+// router.all("/*", (req, res, next) => {
+//   if (req.session.isAdminLoggedIn) {
+//     next();
+//   } else {
+//     res.redirect("/admin/login");
+//   }
+// });
 
-router.get("/register", function (req, res) {
+router.get("/register", [isAuth], function (req, res) {
   res.render("party/register", {
     message: "",
     error: "",
   });
 });
 
-router.post("/submit", upload.single("logo"), async function (req, res) {
+router.post("/submit", [isAuth, upload.single("logo")], async function (
+  req,
+  res
+) {
   const logo = req.file.filename;
   const query = `insert into party(name,short_name,main_candidate,logo) values('${req.body.name}','${req.body.short_name}','${req.body.main_candidate}','${logo}') `;
   try {
-    const result = await pool.query(query);
+    await pool.query(query);
     res.render("party/register", {
       message: "registered successfully",
       error: "",
@@ -37,7 +46,7 @@ router.post("/submit", upload.single("logo"), async function (req, res) {
   }
 });
 
-router.get("/get-all", async function (req, res) {
+router.get("/get-all", isAuth, async function (req, res) {
   try {
     const query = "select * from party";
     const result = await pool.query(query);
@@ -50,7 +59,7 @@ router.get("/get-all", async function (req, res) {
   }
 });
 
-router.get("/edit/:id", async function (req, res) {
+router.get("/edit/:id", isAuth, async function (req, res) {
   const id = req.params.id;
   const query = `select * from party where id = ${id}`;
   try {
@@ -66,7 +75,7 @@ router.get("/edit/:id", async function (req, res) {
   }
 });
 
-router.post("/register-submit", async function (req, res) {
+router.post("/register-submit", isAuth, async function (req, res) {
   const query = `update party set name='${req.body.name}' , main_candidate='${req.body.main_candidate}' , short_name='${req.body.short_name}' where id = ${req.body.id} `;
   try {
     await pool.query(query);
@@ -77,7 +86,10 @@ router.post("/register-submit", async function (req, res) {
   }
 });
 
-router.post("/logo-edit", upload.single("logo"), async function (req, res) {
+router.post("/logo-edit", [isAuth, upload.single("logo")], async function (
+  req,
+  res
+) {
   const logo = req.file.filename;
   const query = `update party set logo = '${logo}' where id = ${req.body.id} `;
   try {
@@ -89,7 +101,7 @@ router.post("/logo-edit", upload.single("logo"), async function (req, res) {
   }
 });
 
-router.get("/delete/:id", async function (req, res) {
+router.get("/delete/:id", isAuth, async function (req, res) {
   const id = req.params.id;
   const query = `delete from party where id = ${id}`;
   try {
