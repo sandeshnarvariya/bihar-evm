@@ -1,33 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>
-        List Of Parties
-    </h1>
-    <table border="1" >
-     <tr> 
-         <th>Logo</th>
-         <th>Party Name</th>
-         <th>Main Candidate</th>
-         <th>Short Name</th>
-         <th>Edit</th>
-         <th>Delete</th>
-     </tr>
-     <% parties.forEach(function(item){ %>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/bootstrap.css" />
+    <title>All Parties</title>
+  </head>
+  <body>
+    <%- include('../common/header', {a:true,b:false,c:false }) %>
+    <table class="table table-dark" style="margin-top: 50px">
+      <thead>
         <tr>
-            <td><img src="/images/<%=item.logo%>" height="100" width="100" alt="failed to load image" ></td>
-            <td><%=item.name%></td>
-            <td><%=item.main_candidate%></td>
-            <td><%=item.short_name%></td>
-            <td><a href="/party/edit/<%=item.id%>">Edit</a></td>
-            <td><a href="/party/delete/<%=item.id%>">Delete</a></td>
+          <th scope="col">Logo</th>
+          <th scope="col">Party Name</th>
+          <th scope="col">Main Candidate</th>
+          <th scope="col">Short Name</th>
+          <th scope="col">Edit</th>
+          <th scope="col">Delete</th>
         </tr>
-     <% }) %>   
+      </thead>
+      <tbody>
+        <% parties.forEach(function(item){ %>
+        <tr scope="row">
+          <td>
+            <img
+              src="/images/<%=item.logo%>"
+              height="100"
+              width="100"
+              class="img-thumbnail"
+              alt="failed to load image"
+            />
+          </td>
+          <td><%=item.name%></td>
+          <td><%=item.main_candidate%></td>
+          <td><%=item.short_name%></td>
+          <td>
+            <a class="btn btn-warning" href="/party/edit/<%=item.id%>">Edit</a>
+          </td>
+          <td>
+            <a class="btn btn-danger" href="/party/delete/<%=item.id%>"
+              >Delete</a
+            >
+          </td>
+        </tr>
+        <% }) %>
+      </tbody>
     </table>
-</body>
+  </body>
+  <script src="/javascript/bootstrap.js"></script>
+  <script src="/javascript/jquery.js"></script>
 </html>

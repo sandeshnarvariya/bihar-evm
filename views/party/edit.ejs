@@ -1,82 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    <form action="/party/register-submit" method="POST" >
-    <table>
+  </head>
+  <body>
+    <%- include('../common/header', {a:false,b:false,c:true }) %>
+    <form action="/party/register-submit" method="POST">
+      <table>
         <tr>
-            <td>
-                <h3>
-                    Add Party
-                </h3>
-            </td>
+          <td>
+            <h3>Add Party</h3>
+          </td>
         </tr>
-        <input type="text" name="id" readonly hidden value="<%=party.id%>">
+        <input type="text" name="id" readonly hidden value="<%=party.id%>" />
         <tr>
-            <td>
-                Enter Party  Name
-            </td>
-            <td>
-                <input type="text" name="name" value="<%=party.name%>" required >
-            </td>
+          <td>Enter Party Name</td>
+          <td>
+            <input type="text" name="name" value="<%=party.name%>" required />
+          </td>
         </tr>
         <tr>
-            <td>
-                Enter Main Candidate  Name
-            </td>
-            <td>
-                <input type="text" name="main_candidate" value="<%=party.main_candidate%>" required >
-            </td>
+          <td>Enter Main Candidate Name</td>
+          <td>
+            <input
+              type="text"
+              name="main_candidate"
+              value="<%=party.main_candidate%>"
+              required
+            />
+          </td>
         </tr>
         <tr>
-            <td>
-                Enter Party  Short  Name
-            </td>
-            <td>
-                <input type="text" name="short_name" value="<%=party.short_name%>"  required >
-            </td>
+          <td>Enter Party Short Name</td>
+          <td>
+            <input
+              type="text"
+              name="short_name"
+              value="<%=party.short_name%>"
+              required
+            />
+          </td>
         </tr>
         <tr>
-            <td>
-               <input type="submit" value="Edit" >
-            </td>
-            <td>
-                <input type='reset'  >
-            </td>
+          <td>
+            <input type="submit" value="Edit" />
+          </td>
+          <td>
+            <input type="reset" />
+          </td>
         </tr>
         <tr>
-           <td><h1 style="color: green;" ><%=message%></h1></td>
+          <td><h1 style="color: green"><%=message%></h1></td>
         </tr>
         <tr>
-            <td><h1 style="color: red;" ><%=error%></h1></td>
-         </tr>
-    </table>
-</form>
-<form action="/party/logo-edit" method="post" enctype="multipart/form-data" >
-    <table>
-        <input type="text" name="id" readonly hidden value="<%=party.id%>">
+          <td><h1 style="color: red"><%=error%></h1></td>
+        </tr>
+      </table>
+    </form>
+    <form action="/party/logo-edit" method="post" enctype="multipart/form-data">
+      <table>
+        <input type="text" name="id" readonly hidden value="<%=party.id%>" />
         <tr>
-            <td>
-                upload logo here 
-            </td>
-            <td>
-                <input required type="file" name="logo" >
-            </td>
-            <td><img src="/images/<%=party.logo%>" height="100" width="100" alt="failed to load image" ></td>
+          <td>upload logo here</td>
+          <td>
+            <input required type="file" name="logo" />
+          </td>
+          <td>
+            <img
+              src="/images/<%=party.logo%>"
+              height="100"
+              width="100"
+              alt="failed to load image"
+            />
+          </td>
         </tr>
         <tr>
-            <td>
-               <input type="submit" value="Edit" >
-            </td>
-            <td>
-                <input type='reset'  >
-            </td>
+          <td>
+            <input type="submit" value="Edit" />
+          </td>
+          <td>
+            <input type="reset" />
+          </td>
         </tr>
-    </table>
-</form>
-</body>
+      </table>
+    </form>
+  </body>
 </html>

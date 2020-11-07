@@ -35,3 +35,19 @@ router.get("/demo", function (req, res) {
 });
 
 module.exports = router;
+
+
+
+
+// voter  --> CURD
+// {
+//   id : 1,
+//   name : "",
+//   gender : "",
+//   age : "",
+//   address : "",
+//   mobileNumber : "",
+//   fatherOrHusbandName:"",
+//   dob:"",
+//   photo : ""
+// } 

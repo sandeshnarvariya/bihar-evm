@@ -1,48 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <form action="/admin/login-submit" method="post"   >
-    <table>
-        <tr>
-            <td>
-                <h3>
-                    Admin Login
-                </h3>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Enter email
-            </td>
-            <td>
-                <input type="text" name="email" required >
-            </td>
-        </tr>
-        <tr>
-            <td>
-                password
-            </td>
-            <td>
-                <input type='password' name="password" required >
-            </td>
-        </tr>
-        <tr>
-            <td>
-               <input type="submit" >
-            </td>
-            <td>
-                <input type='reset'  >
-            </td>
-        </tr>
-        <tr>
-            <td><h1 style="color: red;" ><%=error%></h1></td>
-         </tr>
-    </table>
-</form>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/bootstrap.css" />
+    <title>Admin Login</title>
+  </head>
+  <body>
+    <div
+      class="container d-flex justify-content-center align-items-center"
+      style="height: 500px"
+    >
+      <form
+        action="/admin/login-submit"
+        style="border: 2px solid royalblue; padding: 5%; border-radius: 8px"
+        method="post"
+      >
+        <div class="form-group">
+          <label for="exampleInputEmail1">Email address</label>
+          <input
+            name="email"
+            required
+            type="email"
+            class="form-control"
+            id="exampleInputEmail1"
+            aria-describedby="emailHelp"
+          />
+          <small id="emailHelp" class="form-text text-muted"
+            >We'll never share your email with anyone else.</small
+          >
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Password</label>
+          <input
+            name="password"
+            required
+            type="password"
+            class="form-control"
+            id="exampleInputPassword1"
+          />
+        </div>
+        <button type="submit" class="btn btn-primary" style="width: 100%">
+          Login
+        </button>
+        <br />
+        <br />
+        <% if(error !== ''){ %>
+        <div class="alert alert-danger" role="alert"><%=error%></div>
+        <% } %>
+      </form>
+    </div>
+  </body>
+  <script src="/javascript/bootstrap.js"></script>
+  <script src="/javascript/jquery.js"></script>
 </html>

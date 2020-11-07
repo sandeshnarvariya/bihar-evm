@@ -1,67 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    <form action="/party/submit" method="post" enctype="multipart/form-data"  >
-    <table>
-        <tr>
-            <td>
-                <h3>
-                    Add Party
-                </h3>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Enter Party  Name
-            </td>
-            <td>
-                <input type="text" name="name" required >
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Enter Main Candidate  Name
-            </td>
-            <td>
-                <input type="text" name="main_candidate" required >
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Enter Party  Short  Name
-            </td>
-            <td>
-                <input type="text" name="short_name" required >
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Choose Logo Of Party
-            </td>
-            <td>
-                <input type="file" name="logo" >
-            </td>
-        </tr>
-        <tr>
-            <td>
-               <input type="submit" >
-            </td>
-            <td>
-                <input type='reset'  >
-            </td>
-        </tr>
-        <tr>
-           <td><h1 style="color: green;" ><%=message%></h1></td>
-        </tr>
-        <tr>
-            <td><h1 style="color: red;" ><%=error%></h1></td>
-         </tr>
-    </table>
-</form>
-</body>
+  </head>
+  <body>
+    <%- include('../common/header', {a:false,b:true,c:false }) %>
+    <div
+      class="container d-flex justify-content-center align-items-center"
+      style="height: 500px"
+    >
+      <form action="/party/submit" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Party Name</label>
+          <input
+            name="name"
+            required
+            type="text"
+            class="form-control"
+            id="exampleInputEmail1"
+            aria-describedby="emailHelp"
+          />
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Main Candidate</label>
+          <input
+            name="main_candidate"
+            required
+            type="text"
+            class="form-control"
+            id="exampleInputPassword1"
+          />
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Short Name</label>
+          <input
+            name="short_name"
+            required
+            type="text"
+            class="form-control"
+            id="exampleInputEmail1"
+            aria-describedby="emailHelp"
+          />
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Email address</label>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroupFileAddon01"
+                >Upload</span
+              >
+            </div>
+            <div class="custom-file">
+              <input
+                name="logo"
+                type="file"
+                class="custom-file-input"
+                id="inputGroupFile01"
+                aria-describedby="inputGroupFileAddon01"
+              />
+              <label class="custom-file-label" for="inputGroupFile01"
+                >Choose file</label
+              >
+            </div>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width: 100%">
+          Login
+        </button>
+        <br />
+        <br />
+        <div class="alert alert-danger" role="alert"><%=error%></div>
+      </form>
+    </div>
+  </body>
 </html>
